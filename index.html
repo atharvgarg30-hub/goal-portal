@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goal Setting & Tracking Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2; --color-surface: #ffffff; --color-surface-2: #f5f8f8;
+      --color-border: #d4d1ca; --color-divider: #e6e2da;
+      --color-text: #1f2937; --color-text-muted: #6b7280; --color-text-faint: #9ca3af;
+      --color-primary: #01696f; --color-primary-hover: #0c4e54; --color-success: #2e7d32;
+      --color-warning: #b45309; --color-error: #b91c1c; --color-blue: #2563eb;
+      --radius-sm: 0.375rem; --radius-md: 0.625rem; --radius-lg: 0.9rem; --radius-xl: 1.2rem;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --content-wide: 1200px; --font-body: 'Inter', sans-serif; --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] {
+      --color-bg: #151716; --color-surface: #1d2120; --color-surface-2: #222726; --color-border: #313735;
+      --color-divider: #2a2f2d; --color-text: #e5e7eb; --color-text-muted: #9ca3af; --color-text-faint: #6b7280;
+      --color-primary: #4f98a3; --color-primary-hover: #76bcc6; --shadow-sm: 0 1px 3px rgba(0,0,0,0.3); --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font-body);background:var(--color-bg);color:var(--color-text);line-height:1.5;font-size:var(--text-base)}
+    a,button,input,select,textarea{font:inherit}
+    button{cursor:pointer;border:none;background:none}
+    input,select,textarea{width:100%;padding:0.85rem 0.95rem;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);border-radius:var(--radius-md)}
+    textarea{min-height:92px;resize:vertical}
+    .app{max-width:var(--content-wide);margin:0 auto;padding:var(--space-6)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);margin-bottom:var(--space-6)}
+    .brand{display:flex;align-items:center;gap:var(--space-3)}
+    .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--color-primary),#67b2b5);display:grid;place-items:center;color:#fff;font-weight:800}
+    h1{font-size:var(--text-xl);line-height:1.1}
+    .sub{color:var(--color-text-muted);font-size:var(--text-sm);max-width:70ch}
+    .toolbar{display:flex;gap:var(--space-3);flex-wrap:wrap}
+    .btn{padding:0.8rem 1rem;border-radius:var(--radius-md);border:1px solid var(--color-border);background:var(--color-surface);transition:all var(--transition)}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+    .btn-primary{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+    .btn-primary:hover{background:var(--color-primary-hover)}
+    .shell{display:grid;grid-template-columns:260px 1fr;gap:var(--space-6)}
+    .sidebar,.panel,.card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+    .sidebar{padding:var(--space-4);position:sticky;top:20px;height:fit-content}
+    .navbtn{width:100%;text-align:left;padding:0.85rem 1rem;border-radius:var(--radius-md);margin-bottom:var(--space-2);color:var(--color-text-muted)}
+    .navbtn.active,.navbtn:hover{background:var(--color-surface-2);color:var(--color-text)}
+    .rolebox{padding:var(--space-4);background:var(--color-surface-2);border-radius:var(--radius-lg);margin-bottom:var(--space-4)}
+    .rolechips{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-3)}
+    .chip{padding:0.45rem 0.7rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);font-size:var(--text-xs)}
+    .chip.active{background:var(--color-primary);border-color:var(--color-primary);color:#fff}
+    .content{display:grid;gap:var(--space-4)}
+    .panel{padding:var(--space-5)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-4)}
+    .col-8{grid-column:span 8}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-12{grid-column:span 12}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+    .card{padding:var(--space-4)}
+    .kpi-label{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .kpi-value{font-size:1.8rem;font-weight:800;margin-top:var(--space-2)}
+    .section-title{font-size:var(--text-lg);margin-bottom:var(--space-3)}
+    .muted{color:var(--color-text-muted)}
+    .goal-row{display:grid;grid-template-columns:1.2fr 1fr 0.7fr 0.7fr 0.5fr auto;gap:var(--space-3);align-items:start;padding:var(--space-3);border:1px solid var(--color-divider);border-radius:var(--radius-lg);margin-bottom:var(--space-3)}
+    .goal-row.shared{background:rgba(1,105,111,0.06)}
+    .status{display:inline-flex;padding:0.35rem 0.65rem;border-radius:999px;font-size:var(--text-xs);font-weight:600}
+    .s-draft{background:#e5e7eb;color:#374151}.s-track{background:#dbeafe;color:#1d4ed8}.s-done{background:#dcfce7;color:#166534}.s-lock{background:#fef3c7;color:#92400e}.s-risk{background:#fee2e2;color:#991b1b}
+    table{width:100%;border-collapse:collapse} th,td{padding:0.9rem;border-bottom:1px solid var(--color-divider);text-align:left;font-size:var(--text-sm);vertical-align:top}
+    .progress{height:10px;background:var(--color-divider);border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;background:var(--color-primary)}
+    .note{padding:0.9rem 1rem;border-left:4px solid var(--color-primary);background:var(--color-surface-2);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--color-text-muted)}
+    .pill{display:inline-block;padding:0.3rem 0.6rem;border-radius:999px;background:var(--color-surface-2);border:1px solid var(--color-border);font-size:var(--text-xs)}
+    .stack{display:grid;gap:var(--space-3)} .hidden{display:none}
+    .footer-actions{display:flex;gap:var(--space-3);justify-content:flex-end;flex-wrap:wrap;margin-top:var(--space-4)}
+    .alert{padding:0.9rem 1rem;border-radius:var(--radius-md);font-size:var(--text-sm);display:none}.alert.show{display:block}.alert.error{background:#fee2e2;color:#991b1b}.alert.ok{background:#dcfce7;color:#166534}
+    .small{font-size:var(--text-xs)}
+    @media (max-width: 980px){.shell{grid-template-columns:1fr}.sidebar{position:static}.kpis{grid-template-columns:repeat(2,1fr)}.col-8,.col-4,.col-6{grid-column:span 12}.goal-row{grid-template-columns:1fr 1fr}.topbar{align-items:flex-start;flex-direction:column}}
+    @media (max-width: 640px){.app{padding:var(--space-4)}.kpis{grid-template-columns:1fr}.goal-row{grid-template-columns:1fr}.toolbar{width:100%}.toolbar .btn{flex:1}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">GT</div>
+        <div>
+          <h1>Goal Setting & Tracking Portal</h1>
+          <p class="sub">Single-file demo for hackathon submission with Employee, Manager, and Admin journeys, validation rules, quarterly check-ins, audit logging, and export-ready reporting.</p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="themeToggle">Toggle theme</button>
+        <button class="btn btn-primary" id="seedBtn">Reset demo data</button>
+      </div>
+    </div>
+
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="rolebox">
+          <div class="small muted">Signed in as</div>
+          <div id="roleTitle" style="font-weight:700;margin-top:6px;">Employee</div>
+          <div class="rolechips">
+            <button class="chip active" data-role="employee">Employee</button>
+            <button class="chip" data-role="manager">Manager</button>
+            <button class="chip" data-role="admin">Admin / HR</button>
+          </div>
+        </div>
+        <button class="navbtn active" data-view="dashboard">Dashboard</button>
+        <button class="navbtn" data-view="goals">Goal Sheet</button>
+        <button class="navbtn" data-view="checkins">Quarterly Check-ins</button>
+        <button class="navbtn" data-view="reports">Reports</button>
+        <button class="navbtn" data-view="audit">Audit Trail</button>
+        <div class="note" style="margin-top:var(--space-4)">
+          Check-in windows configured: Goal Setting opens on 1 May, Q1 in July, Q2 in October, Q3 in January, and Q4 in March/April.
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="dashboard" class="panel view">
+          <div class="section-title">Overview</div>
+          <div class="kpis">
+            <div class="card"><div class="kpi-label">Goals Count</div><div class="kpi-value" id="kpiGoals">0</div></div>
+            <div class="card"><div class="kpi-label">Total Weightage</div><div class="kpi-value" id="kpiWeight">0%</div></div>
+            <div class="card"><div class="kpi-label">Avg Progress</div><div class="kpi-value" id="kpiProgress">0%</div></div>
+            <div class="card"><div class="kpi-label">Cycle Status</div><div class="kpi-value" id="kpiCycle">Draft</div></div>
+          </div>
+          <div class="grid" style="margin-top:var(--space-4)">
+            <div class="col-8 panel">
+              <div class="section-title">Current Goal Summary</div>
+              <table>
+                <thead>
+                  <tr><th>Goal</th><th>UoM</th><th>Target</th><th>Status</th><th>Progress</th></tr>
+                </thead>
+                <tbody id="summaryTable"></tbody>
+              </table>
+            </div>
+            <div class="col-4 panel">
+              <div class="section-title">Workflow status</div>
+              <div class="stack">
+                <div class="card"><div class="muted small">Submission</div><div id="submissionState" style="font-weight:700;margin-top:6px">Not submitted</div></div>
+                <div class="card"><div class="muted small">Manager action</div><div id="managerState" style="font-weight:700;margin-top:6px">Pending</div></div>
+                <div class="card"><div class="muted small">Quarterly window</div><div id="quarterState" style="font-weight:700;margin-top:6px">Q1</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="goals" class="panel view hidden">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;align-items:center;">
+            <div>
+              <div class="section-title">Goal Sheet</div>
+              <p class="muted">Validation rules: maximum 8 goals, minimum 10% per goal, and total weightage must equal 100% before submission.</p>
+            </div>
+            <div class="pill" id="goalSheetState">Draft</div>
+          </div>
+          <div class="alert error" id="goalError"></div>
+          <div class="alert ok" id="goalSuccess"></div>
+          <div id="goalList" style="margin-top:var(--space-4)"></div>
+          <div class="footer-actions" id="employeeGoalActions">
+            <button class="btn" id="addGoalBtn">Add Goal</button>
+            <button class="btn" id="saveGoalsBtn">Save Draft</button>
+            <button class="btn btn-primary" id="submitGoalsBtn">Submit Goal Sheet</button>
+          </div>
+          <div class="footer-actions hidden" id="managerGoalActions">
+            <button class="btn" id="returnGoalsBtn">Return for Rework</button>
+            <button class="btn btn-primary" id="approveGoalsBtn">Approve & Lock</button>
+          </div>
+          <div class="footer-actions hidden" id="adminGoalActions">
+            <button class="btn" id="unlockGoalsBtn">Unlock Goal Sheet</button>
+            <button class="btn btn-primary" id="pushSharedGoalBtn">Push Shared Goal</button>
+          </div>
+        </section>
+
+        <section id="checkins" class="panel view hidden">
+          <div class="section-title">Quarterly Check-ins</div>
+          <p class="muted">Employees update achievements, managers capture structured comments, and progress is system-computed for tracking only.</p>
+          <div class="stack" id="checkinList" style="margin-top:var(--space-4)"></div>
+        </section>
+
+        <section id="reports" class="panel view hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;">
+            <div>
+              <div class="section-title">Achievement Report</div>
+              <p class="muted">Export-style view of planned target versus actual achievement and completion tracking.</p>
+            </div>
+            <button class="btn btn-primary" id="downloadCsvBtn">Download CSV</button>
+          </div>
+          <table style="margin-top:var(--space-4)">
+            <thead>
+              <tr><th>Employee</th><th>Goal</th><th>Target</th><th>Actual</th><th>Status</th><th>Progress</th></tr>
+            </thead>
+            <tbody id="reportTable"></tbody>
+          </table>
+        </section>
+
+        <section id="audit" class="panel view hidden">
+          <div class="section-title">Audit Trail</div>
+          <p class="muted">All changes after lock or admin exceptions are recorded with actor, field, and timestamp.</p>
+          <table style="margin-top:var(--space-4)">
+            <thead><tr><th>When</th><th>User</th><th>Action</th><th>Details</th></tr></thead>
+            <tbody id="auditTable"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const seedState = () => ({
+      currentRole: 'employee',
+      currentView: 'dashboard',
+      cycleState: 'Draft',
+      currentQuarter: 'Q1',
+      submissionState: 'Not submitted',
+      managerAction: 'Pending',
+      goalsLocked: false,
+      managerComment: 'Focus on finalizing target clarity before Q1 check-in.',
+      sharedMasterAchievement: 72,
+      goals: [
+        {id: 1, thrust: 'Business Growth', title: 'Increase Sales Revenue', description: 'Drive regional sales growth through key accounts.', uomType: 'numeric-min', target: 100, weightage: 30, actual: 72, status: 'On Track', shared: false, primaryOwner: true, deadline: '2026-09-30'},
+        {id: 2, thrust: 'Operational Excellence', title: 'Reduce Turnaround Time', description: 'Lower average service TAT.', uomType: 'numeric-max', target: 5, weightage: 20, actual: 6, status: 'On Track', shared: false, primaryOwner: true, deadline: '2026-08-31'},
+        {id: 3, thrust: 'Capability Building', title: 'Complete Compliance Training', description: 'Complete mandatory annual certification.', uomType: 'timeline', target: '2026-07-31', actual: '2026-07-20', weightage: 10, status: 'Completed', shared: false, primaryOwner: true, deadline: '2026-07-31'},
+        {id: 4, thrust: 'Safety', title: 'Zero Safety Incidents', description: 'Maintain zero reportable safety incidents.', uomType: 'zero', target: 0, actual: 0, weightage: 10, status: 'Completed', shared: false, primaryOwner: true, deadline: '2026-12-31'},
+        {id: 5, thrust: 'Department KPI', title: 'Improve NPS', description: 'Shared departmental KPI pushed by manager.', uomType: 'numeric-min', target: 90, actual: 72, weightage: 30, status: 'On Track', shared: true, primaryOwner: false, deadline: '2026-12-31'}
+      ],
+      audit: [
+        {when: '2026-05-01 10:00', user: 'Admin', action: 'Cycle opened', details: 'Phase 1 goal-setting cycle opened.'},
+        {when: '2026-05-05 17:30', user: 'Manager', action: 'Shared goal pushed', details: 'Department KPI Improve NPS assigned to team.'}
+      ]
+    });
+
+    let state = seedState();
+
+    const q = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+
+    function computeProgress(goal){
+      if(goal.uomType === 'numeric-min') return Math.min(100, Math.round((Number(goal.actual||0) / Number(goal.target||1)) * 100));
+      if(goal.uomType === 'numeric-max') return Number(goal.actual||0) <= 0 ? 0 : Math.min(100, Math.round((Number(goal.target||0) / Number(goal.actual||1)) * 100));
+      if(goal.uomType === 'timeline') return String(goal.actual || '') <= String(goal.target || '') ? 100 : 50;
+      if(goal.uomType === 'zero') return Number(goal.actual||0) === 0 ? 100 : 0;
+      return 0;
+    }
+
+    function statusClass(status){
+      if(status === 'Completed') return 's-done';
+      if(status === 'On Track') return 's-track';
+      if(status === 'Locked') return 's-lock';
+      if(status === 'At Risk') return 's-risk';
+      return 's-draft';
+    }
+
+    function flash(id, type, msg){
+      const el = q(id); if(!el) return; el.className = 'alert ' + type + ' show'; el.textContent = msg;
+      setTimeout(() => el.classList.remove('show'), 2600);
+    }
+
+    function audit(user, action, details){
+      const now = new Date();
+      const stamp = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+      state.audit.unshift({when: stamp, user, action, details});
+    }
+
+    function renderKPIs(){
+      q('#kpiGoals').textContent = state.goals.length;
+      q('#kpiWeight').textContent = state.goals.reduce((a,g)=>a+Number(g.weightage||0),0) + '%';
+      const avg = state.goals.length ? Math.round(state.goals.reduce((a,g)=>a+computeProgress(g),0)/state.goals.length) : 0;
+      q('#kpiProgress').textContent = avg + '%';
+      q('#kpiCycle').textContent = state.cycleState;
+      q('#submissionState').textContent = state.submissionState;
+      q('#managerState').textContent = state.managerAction;
+      q('#quarterState').textContent = state.currentQuarter + ' window active';
+      q('#goalSheetState').textContent = state.goalsLocked ? 'Approved & Locked' : state.cycleState;
+    }
+
+    function renderSummary(){
+      q('#summaryTable').innerHTML = state.goals.map(g => `
+        <tr>
+          <td>${g.title}${g.shared ? ' <span class="pill">Shared</span>' : ''}</td>
+          <td>${g.uomType}</td>
+          <td>${g.target}</td>
+          <td><span class="status ${statusClass(g.status)}">${g.status}</span></td>
+          <td><div class="progress"><span style="width:${computeProgress(g)}%"></span></div><div class="small muted" style="margin-top:6px">${computeProgress(g)}%</div></td>
+        </tr>
+      `).join('');
+    }
+
+    function goalTemplate(g){
+      const readOnly = state.currentRole === 'employee' && state.goalsLocked;
+      const managerMode = state.currentRole === 'manager';
+      const titleReadOnly = g.shared ? 'readonly' : '';
+      const targetReadOnly = g.shared ? 'readonly' : '';
+      const fullyDisabled = readOnly ? 'disabled' : '';
+      const titleDisabled = (readOnly || managerMode) ? 'disabled' : '';
+      const descDisabled = (readOnly || managerMode) ? 'disabled' : '';
+      const thrustDisabled = (readOnly || managerMode) ? 'disabled' : '';
+      const uomDisabled = (readOnly || managerMode) ? 'disabled' : '';
+      const weightDisabled = readOnly ? 'disabled' : '';
+      const targetDisabled = readOnly ? 'disabled' : '';
+      return `
+        <div class="goal-row ${g.shared ? 'shared' : ''}" data-id="${g.id}">
+          <div class="stack">
+            <label class="small muted">Goal Title</label>
+            <input ${g.shared ? titleReadOnly : ''} ${titleDisabled} class="goal-title" value="${g.title}">
+          </div>
+          <div class="stack">
+            <label class="small muted">Thrust Area</label>
+            <input ${thrustDisabled} class="goal-thrust" value="${g.thrust}">
+          </div>
+          <div class="stack">
+            <label class="small muted">UoM</label>
+            <select ${uomDisabled} class="goal-uom">
+              <option value="numeric-min" ${g.uomType==='numeric-min'?'selected':''}>Min (higher is better)</option>
+              <option value="numeric-max" ${g.uomType==='numeric-max'?'selected':''}>Max (lower is better)</option>
+              <option value="timeline" ${g.uomType==='timeline'?'selected':''}>Timeline</option>
+              <option value="zero" ${g.uomType==='zero'?'selected':''}>Zero-based</option>
+            </select>
+          </div>
+          <div class="stack">
+            <label class="small muted">Target</label>
+            <input ${g.shared ? targetReadOnly : ''} ${targetDisabled} class="goal-target" value="${g.target}">
+          </div>
+          <div class="stack">
+            <label class="small muted">Weight %</label>
+            <input ${weightDisabled} class="goal-weight" type="number" min="0" max="100" value="${g.weightage}">
+          </div>
+          <div class="stack">
+            <label class="small muted">Action</label>
+            <button class="btn remove-goal" ${readOnly || managerMode || g.shared ? 'disabled' : ''}>Remove</button>
+          </div>
+          <div class="col-12 stack">
+            <label class="small muted">Description</label>
+            <textarea ${descDisabled} class="goal-desc">${g.description}</textarea>
+          </div>
+        </div>`;
+    }
+
+    function syncGoalsFromUI(){
+      qa('.goal-row').forEach(row => {
+        const id = Number(row.dataset.id);
+        const g = state.goals.find(x => x.id === id);
+        if(!g) return;
+        g.title = row.querySelector('.goal-title').value;
+        g.thrust = row.querySelector('.goal-thrust').value;
+        g.uomType = row.querySelector('.goal-uom').value;
+        g.target = row.querySelector('.goal-target').value;
+        g.weightage = Number(row.querySelector('.goal-weight').value || 0);
+        g.description = row.querySelector('.goal-desc').value;
+      });
+      const shared = state.goals.find(g => g.shared);
+      if(shared) shared.actual = state.sharedMasterAchievement;
+    }
+
+    function validateGoals(){
+      syncGoalsFromUI();
+      if(state.goals.length > 8) return 'Maximum 8 goals are allowed.';
+      const low = state.goals.find(g => Number(g.weightage||0) < 10);
+      if(low) return 'Each goal must carry at least 10% weightage.';
+      const total = state.goals.reduce((a,g)=>a+Number(g.weightage||0),0);
+      if(total !== 100) return 'Total weightage across all goals must equal 100%.';
+      return '';
+    }
+
+    function renderGoals(){
+      q('#goalList').innerHTML = state.goals.map(goalTemplate).join('');
+      q('#employeeGoalActions').classList.toggle('hidden', state.currentRole !== 'employee');
+      q('#managerGoalActions').classList.toggle('hidden', state.currentRole !== 'manager');
+      q('#adminGoalActions').classList.toggle('hidden', state.currentRole !== 'admin');
+      qa('.remove-goal').forEach(btn => btn.addEventListener('click', e => {
+        const row = e.target.closest('.goal-row');
+        const id = Number(row.dataset.id);
+        state.goals = state.goals.filter(g => g.id !== id);
+        renderAll();
+      }));
+    }
+
+    function renderCheckins(){
+      q('#checkinList').innerHTML = state.goals.map(g => `
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;align-items:center;">
+            <div>
+              <div style="font-weight:700">${g.title}</div>
+              <div class="small muted">Planned target: ${g.target} • UoM: ${g.uomType} ${g.shared ? '• Shared Goal' : ''}</div>
+            </div>
+            <span class="status ${statusClass(g.status)}">${g.status}</span>
+          </div>
+          <div class="grid" style="margin-top:var(--space-4)">
+            <div class="col-4 stack">
+              <label class="small muted">Actual achievement</label>
+              <input class="actual-input" data-id="${g.id}" value="${g.actual}">
+            </div>
+            <div class="col-4 stack">
+              <label class="small muted">Status</label>
+              <select class="status-input" data-id="${g.id}">
+                <option ${g.status==='Not Started'?'selected':''}>Not Started</option>
+                <option ${g.status==='On Track'?'selected':''}>On Track</option>
+                <option ${g.status==='Completed'?'selected':''}>Completed</option>
+              </select>
+            </div>
+            <div class="col-4 stack">
+              <label class="small muted">Progress score</label>
+              <div class="card" style="padding:0.85rem">${computeProgress(g)}%</div>
+            </div>
+            <div class="col-12 stack">
+              <label class="small muted">Manager check-in comment</label>
+              <textarea class="comment-input" data-id="${g.id}" ${state.currentRole === 'employee' ? 'disabled' : ''}>${state.managerComment}</textarea>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      qa('.actual-input').forEach(inp => inp.addEventListener('change', e => {
+        const id = Number(e.target.dataset.id);
+        const g = state.goals.find(x => x.id === id);
+        g.actual = e.target.value;
+        if(g.primaryOwner && g.shared === false){
+          state.sharedMasterAchievement = g.actual;
+        }
+        audit(state.currentRoleLabel, 'Achievement updated', `Updated achievement for ${g.title} to ${g.actual}.`);
+        renderAll();
+      }));
+      qa('.status-input').forEach(inp => inp.addEventListener('change', e => {
+        const g = state.goals.find(x => x.id === Number(e.target.dataset.id));
+        g.status = e.target.value;
+        audit(state.currentRoleLabel, 'Status updated', `Updated status for ${g.title} to ${g.status}.`);
+        renderAll();
+      }));
+      qa('.comment-input').forEach(inp => inp.addEventListener('change', e => {
+        state.managerComment = e.target.value;
+        const g = state.goals.find(x => x.id === Number(e.target.dataset.id));
+        audit(state.currentRoleLabel, 'Check-in comment added', `Comment captured for ${g.title}.`);
+      }));
+    }
+
+    function renderReports(){
+      q('#reportTable').innerHTML = state.goals.map(g => `
+        <tr>
+          <td>Demo Employee</td>
+          <td>${g.title}</td>
+          <td>${g.target}</td>
+          <td>${g.actual}</td>
+          <td>${g.status}</td>
+          <td>${computeProgress(g)}%</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAudit(){
+      q('#auditTable').innerHTML = state.audit.map(a => `
+        <tr><td>${a.when}</td><td>${a.user}</td><td>${a.action}</td><td>${a.details}</td></tr>
+      `).join('');
+    }
+
+    function renderRole(){
+      const labelMap = {employee:'Employee', manager:'Manager', admin:'Admin / HR'};
+      state.currentRoleLabel = labelMap[state.currentRole];
+      q('#roleTitle').textContent = labelMap[state.currentRole];
+      qa('[data-role]').forEach(btn => btn.classList.toggle('active', btn.dataset.role === state.currentRole));
+    }
+
+    function renderView(){
+      qa('.view').forEach(v => v.classList.add('hidden'));
+      q('#' + state.currentView).classList.remove('hidden');
+      qa('.navbtn').forEach(btn => btn.classList.toggle('active', btn.dataset.view === state.currentView));
+    }
+
+    function renderAll(){
+      renderRole();
+      renderView();
+      renderKPIs();
+      renderSummary();
+      renderGoals();
+      renderCheckins();
+      renderReports();
+      renderAudit();
+    }
+
+    q('#themeToggle').addEventListener('click', () => {
+      document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    });
+
+    q('#seedBtn').addEventListener('click', () => {
+      state = seedState();
+      renderAll();
+    });
+
+    qa('[data-role]').forEach(btn => btn.addEventListener('click', () => {
+      state.currentRole = btn.dataset.role;
+      renderAll();
+    }));
+
+    qa('.navbtn').forEach(btn => btn.addEventListener('click', () => {
+      state.currentView = btn.dataset.view;
+      renderAll();
+    }));
+
+    q('#addGoalBtn').addEventListener('click', () => {
+      if(state.goalsLocked) return flash('#goalError','error','Goals are locked. Ask Admin to unlock first.');
+      if(state.goals.length >= 8) return flash('#goalError','error','Maximum 8 goals allowed.');
+      state.goals.push({id: Date.now(), thrust:'New Area', title:'New Goal', description:'Describe the outcome.', uomType:'numeric-min', target:0, weightage:10, actual:0, status:'Not Started', shared:false, primaryOwner:true, deadline:'2026-12-31'});
+      renderAll();
+    });
+
+    q('#saveGoalsBtn').addEventListener('click', () => {
+      syncGoalsFromUI();
+      state.cycleState = 'Draft';
+      audit('Employee','Draft saved','Goal sheet draft updated.');
+      flash('#goalSuccess','ok','Draft saved successfully.');
+      renderAll();
+    });
+
+    q('#submitGoalsBtn').addEventListener('click', () => {
+      const err = validateGoals();
+      if(err) return flash('#goalError','error',err);
+      state.cycleState = 'Submitted';
+      state.submissionState = 'Submitted';
+      state.managerAction = 'Awaiting review';
+      audit('Employee','Goal sheet submitted','Employee submitted goal sheet for approval.');
+      flash('#goalSuccess','ok','Goal sheet submitted for manager approval.');
+      renderAll();
+    });
+
+    q('#approveGoalsBtn').addEventListener('click', () => {
+      syncGoalsFromUI();
+      const err = validateGoals();
+      if(err) return flash('#goalError','error',err);
+      state.goalsLocked = true;
+      state.cycleState = 'Approved';
+      state.submissionState = 'Approved';
+      state.managerAction = 'Locked';
+      audit('Manager','Goal sheet approved','Manager approved goals and locked the goal sheet.');
+      flash('#goalSuccess','ok','Goals approved and locked.');
+      renderAll();
+    });
+
+    q('#returnGoalsBtn').addEventListener('click', () => {
+      state.goalsLocked = false;
+      state.cycleState = 'Returned';
+      state.submissionState = 'Returned for rework';
+      state.managerAction = 'Employee action pending';
+      audit('Manager','Returned for rework','Manager returned goal sheet for edits.');
+      flash('#goalSuccess','ok','Goal sheet returned for employee rework.');
+      renderAll();
+    });
+
+    q('#unlockGoalsBtn').addEventListener('click', () => {
+      state.goalsLocked = false;
+      state.cycleState = 'Unlocked by Admin';
+      state.managerAction = 'Editable by exception';
+      audit('Admin','Goal sheet unlocked','Admin unlocked a previously locked goal sheet.');
+      flash('#goalSuccess','ok','Goal sheet unlocked by admin.');
+      renderAll();
+    });
+
+    q('#pushSharedGoalBtn').addEventListener('click', () => {
+      const exists = state.goals.some(g => g.shared && g.title === 'Department Cost Optimization');
+      if(exists) return flash('#goalError','error','Shared goal already pushed in this demo.');
+      state.goals.push({id: Date.now(), thrust:'Department KPI', title:'Department Cost Optimization', description:'Shared KPI from Admin. Title and target are read-only to recipients.', uomType:'numeric-max', target:8, weightage:10, actual:8, status:'Not Started', shared:true, primaryOwner:false, deadline:'2026-12-31'});
+      audit('Admin','Shared goal pushed','Shared KPI assigned to multiple employees.');
+      flash('#goalSuccess','ok','Shared goal pushed successfully.');
+      renderAll();
+    });
+
+    q('#downloadCsvBtn').addEventListener('click', () => {
+      const rows = [['Employee','Goal','Target','Actual','Status','Progress']].concat(
+        state.goals.map(g => ['Demo Employee', g.title, g.target, g.actual, g.status, computeProgress(g)+'%'])
+      );
+      const csv = rows.map(r => r.map(v => '"' + String(v).replaceAll('"','""') + '"').join(',')).join('\n');
+      const blob = new Blob([csv], {type: 'text/csv'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'achievement-report.csv';
+      a.click();
+      audit(state.currentRoleLabel,'Report exported','Achievement report downloaded as CSV.');
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>
+
+
+
+
+
