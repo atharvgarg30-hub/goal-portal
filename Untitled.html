@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en" data-theme="light"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Goal Setting &amp; Tracking Portal&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--space-12: 3rem; --space-16: 4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-bg: #f7f6f2; --color-surface: #ffffff; --color-surface-2: #f5f8f8;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-border: #d4d1ca; --color-divider: #e6e2da;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-text: #1f2937; --color-text-muted: #6b7280; --color-text-faint: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-primary: #01696f; --color-primary-hover: #0c4e54; --color-success: #2e7d32;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-warning: #b45309; --color-error: #b91c1c; --color-blue: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius-sm: 0.375rem; --radius-md: 0.625rem; --radius-lg: 0.9rem; --radius-xl: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--shadow-sm: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 8px 24px rgba(0,0,0,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--content-wide: 1200px; --font-body: 'Inter', sans-serif; --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>[data-theme="dark"] {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-bg: #151716; --color-surface: #1d2120; --color-surface-2: #222726; --color-border: #313735;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-divider: #2a2f2d; --color-text: #e5e7eb; --color-text-muted: #9ca3af; --color-text-faint: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--color-primary: #4f98a3; --color-primary-hover: #76bcc6; --shadow-sm: 0 1px 3px rgba(0,0,0,0.3); --shadow-md: 0 8px 24px rgba(0,0,0,0.28);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{font-family:var(--font-body);background:var(--color-bg);color:var(--color-text);line-height:1.5;font-size:var(--text-base)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a,button,input,select,textarea{font:inherit}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button{cursor:pointer;border:none;background:none}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input,select,textarea{width:100%;padding:0.85rem 0.95rem;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);border-radius:var(--radius-md)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>textarea{min-height:92px;resize:vertical}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.app{max-width:var(--content-wide);margin:0 auto;padding:var(--space-6)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);margin-bottom:var(--space-6)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand{display:flex;align-items:center;gap:var(--space-3)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--color-primary),#67b2b5);display:grid;place-items:center;color:#fff;font-weight:800}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{font-size:var(--text-xl);line-height:1.1}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sub{color:var(--color-text-muted);font-size:var(--text-sm);max-width:70ch}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.toolbar{display:flex;gap:var(--space-3);flex-wrap:wrap}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{padding:0.8rem 1rem;border-radius:var(--radius-md);border:1px solid var(--color-border);background:var(--color-surface);transition:all var(--transition)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary:hover{background:var(--color-primary-hover)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.shell{display:grid;grid-template-columns:260px 1fr;gap:var(--space-6)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sidebar,.panel,.card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sidebar{padding:var(--space-4);position:sticky;top:20px;height:fit-content}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.navbtn{width:100%;text-align:left;padding:0.85rem 1rem;border-radius:var(--radius-md);margin-bottom:var(--space-2);color:var(--color-text-muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.navbtn.active,.navbtn:hover{background:var(--color-surface-2);color:var(--color-text)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.rolebox{padding:var(--space-4);background:var(--color-surface-2);border-radius:var(--radius-lg);margin-bottom:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.rolechips{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-3)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip{padding:0.45rem 0.7rem;border-radius:999px;border:1px solid var(--color-border);background:var(--color-surface);font-size:var(--text-xs)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip.active{background:var(--color-primary);border-color:var(--color-primary);color:#fff}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.content{display:grid;gap:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel{padding:var(--space-5)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.col-8{grid-column:span 8}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-12{grid-column:span 12}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{padding:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-label{font-size:var(--text-sm);color:var(--color-text-muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi-value{font-size:1.8rem;font-weight:800;margin-top:var(--space-2)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-title{font-size:var(--text-lg);margin-bottom:var(--space-3)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.muted{color:var(--color-text-muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.goal-row{display:grid;grid-template-columns:1.2fr 1fr 0.7fr 0.7fr 0.5fr auto;gap:var(--space-3);align-items:start;padding:var(--space-3);border:1px solid var(--color-divider);border-radius:var(--radius-lg);margin-bottom:var(--space-3)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.goal-row.shared{background:rgba(1,105,111,0.06)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status{display:inline-flex;padding:0.35rem 0.65rem;border-radius:999px;font-size:var(--text-xs);font-weight:600}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.s-draft{background:#e5e7eb;color:#374151}.s-track{background:#dbeafe;color:#1d4ed8}.s-done{background:#dcfce7;color:#166534}.s-lock{background:#fef3c7;color:#92400e}.s-risk{background:#fee2e2;color:#991b1b}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table{width:100%;border-collapse:collapse} th,td{padding:0.9rem;border-bottom:1px solid var(--color-divider);text-align:left;font-size:var(--text-sm);vertical-align:top}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progress{height:10px;background:var(--color-divider);border-radius:999px;overflow:hidden}.progress&gt;span{display:block;height:100%;background:var(--color-primary)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.note{padding:0.9rem 1rem;border-left:4px solid var(--color-primary);background:var(--color-surface-2);border-radius:0 var(--radius-md) var(--radius-md) 0;color:var(--color-text-muted)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{display:inline-block;padding:0.3rem 0.6rem;border-radius:999px;background:var(--color-surface-2);border:1px solid var(--color-border);font-size:var(--text-xs)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stack{display:grid;gap:var(--space-3)} .hidden{display:none}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer-actions{display:flex;gap:var(--space-3);justify-content:flex-end;flex-wrap:wrap;margin-top:var(--space-4)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.alert{padding:0.9rem 1rem;border-radius:var(--radius-md);font-size:var(--text-sm);display:none}.alert.show{display:block}.alert.error{background:#fee2e2;color:#991b1b}.alert.ok{background:#dcfce7;color:#166534}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.small{font-size:var(--text-xs)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 980px){.shell{grid-template-columns:1fr}.sidebar{position:static}.kpis{grid-template-columns:repeat(2,1fr)}.col-8,.col-4,.col-6{grid-column:span 12}.goal-row{grid-template-columns:1fr 1fr}.topbar{align-items:flex-start;flex-direction:column}}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 640px){.app{padding:var(--space-4)}.kpis{grid-template-columns:1fr}.goal-row{grid-template-columns:1fr}.toolbar{width:100%}.toolbar .btn{flex:1}}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="brand"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo"&gt;GT&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1&gt;Goal Setting &amp; Tracking Portal&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="sub"&gt;Single-file demo for hackathon submission with Employee, Manager, and Admin journeys, validation rules, quarterly check-ins, audit logging, and export-ready reporting.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="toolbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn" id="themeToggle"&gt;Toggle theme&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-primary" id="seedBtn"&gt;Reset demo data&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shell"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;aside class="sidebar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rolebox"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="small muted"&gt;Signed in as&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="roleTitle" style="font-weight:700;margin-top:6px;"&gt;Employee&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rolechips"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="chip active" data-role="employee"&gt;Employee&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="chip" data-role="manager"&gt;Manager&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="chip" data-role="admin"&gt;Admin / HR&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="navbtn active" data-view="dashboard"&gt;Dashboard&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="navbtn" data-view="goals"&gt;Goal Sheet&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="navbtn" data-view="checkins"&gt;Quarterly Check-ins&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="navbtn" data-view="reports"&gt;Reports&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="navbtn" data-view="audit"&gt;Audit Trail&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="note" style="margin-top:var(--space-4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Check-in windows configured: Goal Setting opens on 1 May, Q1 in July, Q2 in October, Q3 in January, and Q4 in March/April.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/aside&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;main class="content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="dashboard" class="panel view"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="section-title"&gt;Overview&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpis"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;&lt;div class="kpi-label"&gt;Goals Count&lt;/div&gt;&lt;div class="kpi-value" id="kpiGoals"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;&lt;div class="kpi-label"&gt;Total Weightage&lt;/div&gt;&lt;div class="kpi-value" id="kpiWeight"&gt;0%&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;&lt;div class="kpi-label"&gt;Avg Progress&lt;/div&gt;&lt;div class="kpi-value" id="kpiProgress"&gt;0%&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;&lt;div class="kpi-label"&gt;Cycle Status&lt;/div&gt;&lt;div class="kpi-value" id="kpiCycle"&gt;Draft&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="grid" style="margin-top:var(--space-4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-8 panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="section-title"&gt;Current Goal Summary&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;tr&gt;&lt;th&gt;Goal&lt;/th&gt;&lt;th&gt;UoM&lt;/th&gt;&lt;th&gt;Target&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Progress&lt;/th&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tbody id="summaryTable"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-4 panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="section-title"&gt;Workflow status&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card"&gt;&lt;div class="muted small"&gt;Submission&lt;/div&gt;&lt;div id="submissionState" style="font-weight:700;margin-top:6px"&gt;Not submitted&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card"&gt;&lt;div class="muted small"&gt;Manager action&lt;/div&gt;&lt;div id="managerState" style="font-weight:700;margin-top:6px"&gt;Pending&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card"&gt;&lt;div class="muted small"&gt;Quarterly window&lt;/div&gt;&lt;div id="quarterState" style="font-weight:700;margin-top:6px"&gt;Q1&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="goals" class="panel view hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="display:flex;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;align-items:center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="section-title"&gt;Goal Sheet&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;Validation rules: maximum 8 goals, minimum 10% per goal, and total weightage must equal 100% before submission.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="pill" id="goalSheetState"&gt;Draft&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="alert error" id="goalError"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="alert ok" id="goalSuccess"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="goalList" style="margin-top:var(--space-4)"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="footer-actions" id="employeeGoalActions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="addGoalBtn"&gt;Add Goal&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="saveGoalsBtn"&gt;Save Draft&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="submitGoalsBtn"&gt;Submit Goal Sheet&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="footer-actions hidden" id="managerGoalActions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="returnGoalsBtn"&gt;Return for Rework&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="approveGoalsBtn"&gt;Approve &amp; Lock&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="footer-actions hidden" id="adminGoalActions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="unlockGoalsBtn"&gt;Unlock Goal Sheet&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="pushSharedGoalBtn"&gt;Push Shared Goal&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="checkins" class="panel view hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="section-title"&gt;Quarterly Check-ins&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;Employees update achievements, managers capture structured comments, and progress is system-computed for tracking only.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack" id="checkinList" style="margin-top:var(--space-4)"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="reports" class="panel view hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="section-title"&gt;Achievement Report&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;Export-style view of planned target versus actual achievement and completion tracking.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="downloadCsvBtn"&gt;Download CSV&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;table style="margin-top:var(--space-4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;tr&gt;&lt;th&gt;Employee&lt;/th&gt;&lt;th&gt;Goal&lt;/th&gt;&lt;th&gt;Target&lt;/th&gt;&lt;th&gt;Actual&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Progress&lt;/th&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;tbody id="reportTable"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="audit" class="panel view hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="section-title"&gt;Audit Trail&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;All changes after lock or admin exceptions are recorded with actor, field, and timestamp.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;table style="margin-top:var(--space-4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;When&lt;/th&gt;&lt;th&gt;User&lt;/th&gt;&lt;th&gt;Action&lt;/th&gt;&lt;th&gt;Details&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;tbody id="auditTable"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const seedState = () =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>currentRole: 'employee',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>currentView: 'dashboard',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cycleState: 'Draft',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>currentQuarter: 'Q1',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>submissionState: 'Not submitted',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>managerAction: 'Pending',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>goalsLocked: false,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>managerComment: 'Focus on finalizing target clarity before Q1 check-in.',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>sharedMasterAchievement: 72,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>goals: [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{id: 1, thrust: 'Business Growth', title: 'Increase Sales Revenue', description: 'Drive regional sales growth through key accounts.', uomType: 'numeric-min', target: 100, weightage: 30, actual: 72, status: 'On Track', shared: false, primaryOwner: true, deadline: '2026-09-30'},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{id: 2, thrust: 'Operational Excellence', title: 'Reduce Turnaround Time', description: 'Lower average service TAT.', uomType: 'numeric-max', target: 5, weightage: 20, actual: 6, status: 'On Track', shared: false, primaryOwner: true, deadline: '2026-08-31'},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{id: 3, thrust: 'Capability Building', title: 'Complete Compliance Training', description: 'Complete mandatory annual certification.', uomType: 'timeline', target: '2026-07-31', actual: '2026-07-20', weightage: 10, status: 'Completed', shared: false, primaryOwner: true, deadline: '2026-07-31'},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{id: 4, thrust: 'Safety', title: 'Zero Safety Incidents', description: 'Maintain zero reportable safety incidents.', uomType: 'zero', target: 0, actual: 0, weightage: 10, status: 'Completed', shared: false, primaryOwner: true, deadline: '2026-12-31'},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{id: 5, thrust: 'Department KPI', title: 'Improve NPS', description: 'Shared departmental KPI pushed by manager.', uomType: 'numeric-min', target: 90, actual: 72, weightage: 30, status: 'On Track', shared: true, primaryOwner: false, deadline: '2026-12-31'}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit: [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{when: '2026-05-01 10:00', user: 'Admin', action: 'Cycle opened', details: 'Phase 1 goal-setting cycle opened.'},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{when: '2026-05-05 17:30', user: 'Manager', action: 'Shared goal pushed', details: 'Department KPI Improve NPS assigned to team.'}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let state = seedState();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const q = s =&gt; document.querySelector(s);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const qa = s =&gt; [...document.querySelectorAll(s)];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function computeProgress(goal){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(goal.uomType === 'numeric-min') return Math.min(100, Math.round((Number(goal.actual||0) / Number(goal.target||1)) * 100));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(goal.uomType === 'numeric-max') return Number(goal.actual||0) &lt;= 0 ? 0 : Math.min(100, Math.round((Number(goal.target||0) / Number(goal.actual||1)) * 100));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(goal.uomType === 'timeline') return String(goal.actual || '') &lt;= String(goal.target || '') ? 100 : 50;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(goal.uomType === 'zero') return Number(goal.actual||0) === 0 ? 100 : 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function statusClass(status){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(status === 'Completed') return 's-done';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(status === 'On Track') return 's-track';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(status === 'Locked') return 's-lock';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(status === 'At Risk') return 's-risk';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return 's-draft';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function flash(id, type, msg){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const el = q(id); if(!el) return; el.className = 'alert ' + type + ' show'; el.textContent = msg;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; el.classList.remove('show'), 2600);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function audit(user, action, details){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const stamp = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.audit.unshift({when: stamp, user, action, details});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderKPIs(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#kpiGoals').textContent = state.goals.length;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#kpiWeight').textContent = state.goals.reduce((a,g)=&gt;a+Number(g.weightage||0),0) + '%';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const avg = state.goals.length ? Math.round(state.goals.reduce((a,g)=&gt;a+computeProgress(g),0)/state.goals.length) : 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#kpiProgress').textContent = avg + '%';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#kpiCycle').textContent = state.cycleState;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#submissionState').textContent = state.submissionState;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#managerState').textContent = state.managerAction;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#quarterState').textContent = state.currentQuarter + ' window active';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#goalSheetState').textContent = state.goalsLocked ? 'Approved &amp; Locked' : state.cycleState;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderSummary(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#summaryTable').innerHTML = state.goals.map(g =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.title}${g.shared ? ' &lt;span class="pill"&gt;Shared&lt;/span&gt;' : ''}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.uomType}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.target}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;&lt;span class="status ${statusClass(g.status)}"&gt;${g.status}&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;&lt;div class="progress"&gt;&lt;span style="width:${computeProgress(g)}%"&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class="small muted" style="margin-top:6px"&gt;${computeProgress(g)}%&lt;/div&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function goalTemplate(g){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const readOnly = state.currentRole === 'employee' &amp;&amp; state.goalsLocked;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const managerMode = state.currentRole === 'manager';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const titleReadOnly = g.shared ? 'readonly' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const targetReadOnly = g.shared ? 'readonly' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const fullyDisabled = readOnly ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const titleDisabled = (readOnly || managerMode) ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const descDisabled = (readOnly || managerMode) ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const thrustDisabled = (readOnly || managerMode) ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const uomDisabled = (readOnly || managerMode) ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const weightDisabled = readOnly ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const targetDisabled = readOnly ? 'disabled' : '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="goal-row ${g.shared ? 'shared' : ''}" data-id="${g.id}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Goal Title&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input ${g.shared ? titleReadOnly : ''} ${titleDisabled} class="goal-title" value="${g.title}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Thrust Area&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input ${thrustDisabled} class="goal-thrust" value="${g.thrust}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;UoM&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;select ${uomDisabled} class="goal-uom"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="numeric-min" ${g.uomType==='numeric-min'?'selected':''}&gt;Min (higher is better)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="numeric-max" ${g.uomType==='numeric-max'?'selected':''}&gt;Max (lower is better)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="timeline" ${g.uomType==='timeline'?'selected':''}&gt;Timeline&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="zero" ${g.uomType==='zero'?'selected':''}&gt;Zero-based&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Target&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input ${g.shared ? targetReadOnly : ''} ${targetDisabled} class="goal-target" value="${g.target}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Weight %&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input ${weightDisabled} class="goal-weight" type="number" min="0" max="100" value="${g.weightage}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Action&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn remove-goal" ${readOnly || managerMode || g.shared ? 'disabled' : ''}&gt;Remove&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="col-12 stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small muted"&gt;Description&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea ${descDisabled} class="goal-desc"&gt;${g.description}&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function syncGoalsFromUI(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.goal-row').forEach(row =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = Number(row.dataset.id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const g = state.goals.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!g) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.title = row.querySelector('.goal-title').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.thrust = row.querySelector('.goal-thrust').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.uomType = row.querySelector('.goal-uom').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.target = row.querySelector('.goal-target').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.weightage = Number(row.querySelector('.goal-weight').value || 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.description = row.querySelector('.goal-desc').value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const shared = state.goals.find(g =&gt; g.shared);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(shared) shared.actual = state.sharedMasterAchievement;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function validateGoals(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncGoalsFromUI();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(state.goals.length &gt; 8) return 'Maximum 8 goals are allowed.';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const low = state.goals.find(g =&gt; Number(g.weightage||0) &lt; 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(low) return 'Each goal must carry at least 10% weightage.';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const total = state.goals.reduce((a,g)=&gt;a+Number(g.weightage||0),0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(total !== 100) return 'Total weightage across all goals must equal 100%.';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderGoals(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#goalList').innerHTML = state.goals.map(goalTemplate).join('');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#employeeGoalActions').classList.toggle('hidden', state.currentRole !== 'employee');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#managerGoalActions').classList.toggle('hidden', state.currentRole !== 'manager');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#adminGoalActions').classList.toggle('hidden', state.currentRole !== 'admin');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.remove-goal').forEach(btn =&gt; btn.addEventListener('click', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const row = e.target.closest('.goal-row');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = Number(row.dataset.id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.goals = state.goals.filter(g =&gt; g.id !== id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderCheckins(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#checkinList').innerHTML = state.goals.map(g =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="display:flex;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;align-items:center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div style="font-weight:700"&gt;${g.title}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="small muted"&gt;Planned target: ${g.target} • UoM: ${g.uomType} ${g.shared ? '• Shared Goal' : ''}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="status ${statusClass(g.status)}"&gt;${g.status}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="grid" style="margin-top:var(--space-4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-4 stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="small muted"&gt;Actual achievement&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;input class="actual-input" data-id="${g.id}" value="${g.actual}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-4 stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="small muted"&gt;Status&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select class="status-input" data-id="${g.id}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option ${g.status==='Not Started'?'selected':''}&gt;Not Started&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option ${g.status==='On Track'?'selected':''}&gt;On Track&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option ${g.status==='Completed'?'selected':''}&gt;Completed&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-4 stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="small muted"&gt;Progress score&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="card" style="padding:0.85rem"&gt;${computeProgress(g)}%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="col-12 stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="small muted"&gt;Manager check-in comment&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;textarea class="comment-input" data-id="${g.id}" ${state.currentRole === 'employee' ? 'disabled' : ''}&gt;${state.managerComment}&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.actual-input').forEach(inp =&gt; inp.addEventListener('change', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = Number(e.target.dataset.id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const g = state.goals.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.actual = e.target.value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(g.primaryOwner &amp;&amp; g.shared === false){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>state.sharedMasterAchievement = g.actual;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audit(state.currentRoleLabel, 'Achievement updated', `Updated achievement for ${g.title} to ${g.actual}.`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.status-input').forEach(inp =&gt; inp.addEventListener('change', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const g = state.goals.find(x =&gt; x.id === Number(e.target.dataset.id));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.status = e.target.value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audit(state.currentRoleLabel, 'Status updated', `Updated status for ${g.title} to ${g.status}.`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.comment-input').forEach(inp =&gt; inp.addEventListener('change', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.managerComment = e.target.value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const g = state.goals.find(x =&gt; x.id === Number(e.target.dataset.id));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audit(state.currentRoleLabel, 'Check-in comment added', `Comment captured for ${g.title}.`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderReports(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#reportTable').innerHTML = state.goals.map(g =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;Demo Employee&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.title}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.target}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.actual}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${g.status}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;td&gt;${computeProgress(g)}%&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderAudit(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#auditTable').innerHTML = state.audit.map(a =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;&lt;td&gt;${a.when}&lt;/td&gt;&lt;td&gt;${a.user}&lt;/td&gt;&lt;td&gt;${a.action}&lt;/td&gt;&lt;td&gt;${a.details}&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderRole(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const labelMap = {employee:'Employee', manager:'Manager', admin:'Admin / HR'};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.currentRoleLabel = labelMap[state.currentRole];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#roleTitle').textContent = labelMap[state.currentRole];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('[data-role]').forEach(btn =&gt; btn.classList.toggle('active', btn.dataset.role === state.currentRole));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderView(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.view').forEach(v =&gt; v.classList.add('hidden'));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>q('#' + state.currentView).classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>qa('.navbtn').forEach(btn =&gt; btn.classList.toggle('active', btn.dataset.view === state.currentView));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderAll(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderRole();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderView();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderKPIs();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderSummary();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderGoals();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCheckins();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderReports();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAudit();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#themeToggle').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#seedBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state = seedState();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa('[data-role]').forEach(btn =&gt; btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.currentRole = btn.dataset.role;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa('.navbtn').forEach(btn =&gt; btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.currentView = btn.dataset.view;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#addGoalBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(state.goalsLocked) return flash('#goalError','error','Goals are locked. Ask Admin to unlock first.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(state.goals.length &gt;= 8) return flash('#goalError','error','Maximum 8 goals allowed.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.goals.push({id: Date.now(), thrust:'New Area', title:'New Goal', description:'Describe the outcome.', uomType:'numeric-min', target:0, weightage:10, actual:0, status:'Not Started', shared:false, primaryOwner:true, deadline:'2026-12-31'});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#saveGoalsBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncGoalsFromUI();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cycleState = 'Draft';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Employee','Draft saved','Goal sheet draft updated.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Draft saved successfully.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#submitGoalsBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const err = validateGoals();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(err) return flash('#goalError','error',err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cycleState = 'Submitted';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.submissionState = 'Submitted';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.managerAction = 'Awaiting review';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Employee','Goal sheet submitted','Employee submitted goal sheet for approval.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Goal sheet submitted for manager approval.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#approveGoalsBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncGoalsFromUI();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const err = validateGoals();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(err) return flash('#goalError','error',err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.goalsLocked = true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cycleState = 'Approved';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.submissionState = 'Approved';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.managerAction = 'Locked';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Manager','Goal sheet approved','Manager approved goals and locked the goal sheet.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Goals approved and locked.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#returnGoalsBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.goalsLocked = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cycleState = 'Returned';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.submissionState = 'Returned for rework';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.managerAction = 'Employee action pending';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Manager','Returned for rework','Manager returned goal sheet for edits.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Goal sheet returned for employee rework.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#unlockGoalsBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.goalsLocked = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cycleState = 'Unlocked by Admin';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.managerAction = 'Editable by exception';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Admin','Goal sheet unlocked','Admin unlocked a previously locked goal sheet.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Goal sheet unlocked by admin.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#pushSharedGoalBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const exists = state.goals.some(g =&gt; g.shared &amp;&amp; g.title === 'Department Cost Optimization');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(exists) return flash('#goalError','error','Shared goal already pushed in this demo.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.goals.push({id: Date.now(), thrust:'Department KPI', title:'Department Cost Optimization', description:'Shared KPI from Admin. Title and target are read-only to recipients.', uomType:'numeric-max', target:8, weightage:10, actual:8, status:'Not Started', shared:true, primaryOwner:false, deadline:'2026-12-31'});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit('Admin','Shared goal pushed','Shared KPI assigned to multiple employees.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flash('#goalSuccess','ok','Shared goal pushed successfully.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>q('#downloadCsvBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rows = [['Employee','Goal','Target','Actual','Status','Progress']].concat(</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.goals.map(g =&gt; ['Demo Employee', g.title, g.target, g.actual, g.status, computeProgress(g)+'%'])</p>
+<p class="p1"><span class="Apple-converted-space">      </span>);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const csv = rows.map(r =&gt; r.map(v =&gt; '"' + String(v).replaceAll('"','""') + '"').join(',')).join('\n');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const blob = new Blob([csv], {type: 'text/csv'});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const a = document.createElement('a');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.href = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.download = 'achievement-report.csv';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>audit(state.currentRoleLabel,'Report exported','Achievement report downloaded as CSV.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
